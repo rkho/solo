@@ -18,24 +18,30 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Lunch Reactor
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > Find your next meal while at Hack Reactor
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > Lunch Reactor is a one-click button that aims to solve the question "Where are we eating today?" for your cohort.
 
 ## Problem ##
   > Describe the problem your product solves.
+  > Every day, we spend time trying to figure out what we're having for lunch. Lunch Reactor lets you skip that dilemma by receiving a hand-picked selection from someone who has attended Hack Reactor.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+  > One button, one result. 
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
+  > Just press the green button!
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
