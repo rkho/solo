@@ -71,7 +71,9 @@ angular.module('lunchRecs')
       else {
       var key = $scope.chosenPlace.key
       var updateMe = new Firebase('https://lunchrecs.firebaseio.com/places/' + key);
+      $scope.chosenPlace.tips = string;
       updateMe.update({tips: string});
+      // updateMe.$save();
       swal("Thanks!", "Your tip has been added!", "success")
       }
     };

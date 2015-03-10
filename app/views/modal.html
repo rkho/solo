@@ -10,7 +10,7 @@
         <h3> {{chosenPlace.text }}</h3>
         <p>Distance: {{ chosenPlace.distance }}</p>
         <p>Price: {{ chosenPlace.price }}</p>
-        <p>Tips: {{ chosenPlace.tips }}</p>
+        <p ng-model="tipsModel">Tips: {{ chosenPlace.tips }}</p>
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">!</span>
