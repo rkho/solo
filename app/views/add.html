@@ -1,0 +1,69 @@
+<form class="form-horizontal">
+  <fieldset>
+    <legend>Add a Place</legend>
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Search</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputEmail" ng-model="placeName" placeholder="What's the place?">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="textArea" class="col-lg-2 control-label">Any Tips?</label>
+      <div class="col-lg-10">
+        <textarea class="form-control" rows="3" id="textArea" ng-model="placeTips"></textarea>
+        <span class="help-block">i.e. "Don't get the chicken here", "Lunch specials on Wednesday!"</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Distance</label>
+      <div class="col-lg-10">
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="placeDistance" value="Walking" checked="">
+            Walking
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="placeDistance" value="Bus">
+            Bus
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="select" class="col-lg-2 control-label">Pricing</label>
+      <div class="col-lg-10">
+        <select class="form-control" id="select" ng-model="placePrice">
+          <option>Under $10</option>
+          <option>Under $20</option>
+          <option>I just sold AVIATO. I can afford it.</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="yelpLink" class="col-lg-2 control-label">Yelp Link</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="yelpLink" ng-model="placeYelp" placeholder="Link to the Yelp page">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="directionLink" class="col-lg-2 control-label">Directions</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="directionLink" ng-model="placeMaps" placeholder="Link to directions">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="imageLink" class="col-lg-2 control-label">Image</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="imageLink" ng-model="placeImage" placeholder="Link to image">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary" ng-click="addPlace(placeName, placeTips, placeDistance, placePrice, placeYelp, placeMaps, placeImage)">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form>

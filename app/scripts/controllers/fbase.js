@@ -1,41 +1,87 @@
 angular.module('lunchRecs')
-  .controller('FirebaseCtrl', function($scope, $firebaseArray){
-    var ref = new Firebase('https://lunchrecs.firebaseio.com/places');
-    var placesArr = [];
-    $scope.places = $firebaseArray(ref);
-    $scope.addPlace = function(){
-      $scope.places.$add({
-        text: 'Chipotle'
-      });
+  .config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
     }
-    $scope.getPlace = function(){
+  ])
+  .controller('FirebaseCtrl', ['$scope', '$firebaseArray', '$http', 'AUTH', function($scope, $firebaseArray, $http, AUTH){
+    var ref = new Firebase('https://lunchrecs.firebaseio.com/places');
+    var placesObj = {};
+    $scope.places = $firebaseArray(ref);
+    $scope.showModal = false;
 
+    $scope.addPlace = function(name, tips, distance, price, yelp, maps, image){
+      if (name && tips && distance && price && yelp && maps && image){
+        $scope.places.$add({
+          text: name,
+          tips: tips,
+          distance: distance,
+          price: price,
+          yelplink: yelp,
+          directions: maps,
+          image: image
+        });
+        swal("Thanks!", "Your place has been added!", "success");
+        $scope.placeName='';
+        $scope.placeTips='';
+        $scope.placePrice='';
+        $scope.placeYelp='';
+        $scope.placeMaps='';
+        $scope.placeImage=''
+      }
+      else{
+        swal("Whoops!", "You're missing a field!", "error");
+      }
+    }
+
+    $scope.getPlace = function(){
       var randomNum;
       $scope.chosenPlace;
       jQuery.getJSON('https://lunchrecs.firebaseio.com/places.json', function(data){
         randomNum = parseInt(Math.random()*(Object.keys(data).length));
         $scope.chosenPlace = data[Object.keys(data)[randomNum]];
         $scope.chosenPlace.key = Object.keys(data)[randomNum];
-        console.log($scope.chosenPlace.key);
       });
     };
 
-    $scope.showModal = false;
+    $scope.getListOfPlaces = function(){
+      jQuery.getJSON('https://lunchrecs.firebaseio.com/places.json', function(data){
+        _.each(data, function(key){
+          if (!placesObj[key.text]){
+            placesObj[key.text] = true;
+          }
+        })
+        console.log(placesObj);
+      })
+      // console.log(placesObj);
+    }
+
     $scope.toggleModal = function(){
-        $scope.showModal = !$scope.showModal;
+      $scope.showModal = !$scope.showModal;
     };
     $scope.getAndToggle = function(){
       $scope.getPlace();
       $scope.toggleModal();
-    }
+    };
 
     $scope.addTip = function(string){
-      console.log($scope.chosenPlace);
+      if (string === undefined || string === ''){
+        swal('Whoops!', 'You need to write something first!', 'error')
+      }
+      else {
       var key = $scope.chosenPlace.key
       var updateMe = new Firebase('https://lunchrecs.firebaseio.com/places/' + key);
       updateMe.update({tips: string});
-    }
-  })
+      swal("Thanks!", "Your tip has been added!", "success")
+      }
+    };
+    // $scope.yelpSearch = function(name){
+    //   $http.get("http://api.yelp.com/v2/search?term=" + name + "&location=94102&cll=37.783624,-122.408999&limit=10&category_filter=restaurants&callback=datacb"
+    //   ).then(function(data){
+    //     console.log(data);
+    //   })
+    // }
+  }])
   .directive('modal', function(){
     return {
       templateUrl: 'views/modal.html',

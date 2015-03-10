@@ -12,10 +12,14 @@
         <p>Price: {{ chosenPlace.price }}</p>
         <p>Tips: {{ chosenPlace.tips }}</p>
       </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">!</span>
+        <input type="text" class="form-control" ng-model="tipInput" placeholder="Add a tip here!" aria-describedby="basic-addon1">
+      </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" ng-click="addTip('Really Delicious')">Add Tip</button>
-        <button type="button" class="btn btn-danger">Yelp</button>
-        <button type="button" class="btn btn-warning">Maps</button>
+        <button type="button" class="btn btn-primary" ng-click="addTip(tipInput); tipInput = ''">Add Tip</button>
+        <a button type="button" target="_blank" href="{{ chosenPlace.yelplink }}" class="btn btn-danger">Yelp</a>
+        <a button type="button" target="_blank" href="{{ chosenPlace.directions }}" class="btn btn-warning">Maps</a>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

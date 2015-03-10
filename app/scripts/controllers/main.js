@@ -14,4 +14,9 @@ angular.module('lunchRecs')
       'AngularJS',
       'Karma'
     ];
-  });
+  })
+  .config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+  ]);
