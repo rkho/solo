@@ -9,17 +9,32 @@ angular.module('lunchRecs')
       });
     }
     $scope.getPlace = function(){
+
+      var randomNum;
+      $scope.chosenPlace;
       jQuery.getJSON('https://lunchrecs.firebaseio.com/places.json', function(data){
-        _.each(data, function(elem){
-          console.log(elem.text);
-        })
+        randomNum = parseInt(Math.random()*(Object.keys(data).length));
+        $scope.chosenPlace = data[Object.keys(data)[randomNum]];
+        $scope.chosenPlace.key = Object.keys(data)[randomNum];
+        console.log($scope.chosenPlace.key);
       });
     };
+
     $scope.showModal = false;
     $scope.toggleModal = function(){
-        console.log('hi!')
         $scope.showModal = !$scope.showModal;
     };
+    $scope.getAndToggle = function(){
+      $scope.getPlace();
+      $scope.toggleModal();
+    }
+
+    $scope.addTip = function(string){
+      console.log($scope.chosenPlace);
+      var key = $scope.chosenPlace.key
+      var updateMe = new Firebase('https://lunchrecs.firebaseio.com/places/' + key);
+      updateMe.update({tips: string});
+    }
   })
   .directive('modal', function(){
     return {

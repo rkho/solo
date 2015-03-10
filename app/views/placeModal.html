@@ -1,0 +1,40 @@
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="text-danger fa fa-times"></i></button>
+        <h3 class="modal-title" id="myModalLabel"><i class="text-muted fa fa-shopping-cart"></i> <strong>{{ chosenPlace.text }}</strong></h4>
+      </div>
+      <div class="modal-body">
+        <table class="pull-left col-md-6 ">
+             <tbody>
+                 <tr>
+                     <td class="h4"><strong>Distance</strong></td>
+                     <td> </td>
+                     <td class="h5">{{ chosenPlace.distance }}</td>
+                 </tr>
+                 <br>
+                 <br>
+                 <tr>
+                     <td class="h4"><strong>Price</strong></td>
+                     <td> </td>
+                     <td class="h5">{{ chosenPlace.price }}</td>
+                 </tr>
+             </tbody>
+        </table>
+        <div class="col-md-4">
+            <img src="{{ chosenPlace.image }}" alt="teste" class="img-thumbnail">  
+        </div>
+      <div class="modal-footer">
+        <div class="text-right pull-right col-md-3">
+            Pricing: <br/>
+            <span class="h3 text-muted"><strong> R$50,00 </strong></span></span> 
+        </div>
+        <div class="text-right pull-right col-md-3">
+            Rating: <br/>
+            <span class="h3 text-muted"><strong>R$35,00</strong></span>
+        </div>
+    </div>
+  </div>
+</div>
+</div>
