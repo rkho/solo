@@ -2,22 +2,33 @@
 
 /**
  * @ngdoc overview
- * @name lunchrecsApp
+ * @name 201502SoloApp
  * @description
- * # lunchrecsApp
+ * # 201502SoloApp
  *
  * Main module of the application.
  */
-angular.module('lunchrecsApp', [
+angular
+  .module('lunchRecs', [
     'ngAnimate',
-    'ngAria',
     'ngCookies',
-    'ngMessages',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'firebase',
-    'firebase.utils',
-    'simpleLogin'
-  ]);
+    'firebase'
+  ])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });

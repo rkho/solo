@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name 201502SoloApp.controller:MainCtrl
+ * @name 201502SoloApp.controller:AboutCtrl
  * @description
- * # MainCtrl
+ * # AboutCtrl
  * Controller of the 201502SoloApp
  */
 angular.module('lunchRecs')
-  .controller('MainCtrl', function ($scope) {
+  .controller('AboutCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
