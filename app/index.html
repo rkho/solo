@@ -26,16 +26,16 @@
          <div class="header">
            <nav>
              <ul class="nav nav-pills pull-right">
-               <li role="presentation" class="active"><a href="#">Home</a></li>
+               <li role="presentation" class="active"><a href="#/">Home</a></li>
                <li role="presentation"><a href="#/about">About</a></li>
-               <li role="presentation"><a href="#">Contact</a></li>
+               <li role="presentation"><a href="#/">Contact</a></li>
              </ul>
            </nav>
            <h3 class="text-muted">Lunch Recs</h3>
          </div>
 
     <div class="container">
-    <div ng-view=""></div>
+    <div ng-view ng-controller="FirebaseCtrl"></div>
     </div>
 
     <div class="footer">
@@ -47,6 +47,7 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="../bower_components/underscore/underscore-min.js"></script>
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../bower_components/angular/angular.js"></script>
     <!-- Firebase -->
@@ -67,6 +68,7 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/fbase.js"></script>
         <!-- endbuild -->
 </body>
 </html>
