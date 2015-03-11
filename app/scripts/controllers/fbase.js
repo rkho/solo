@@ -4,7 +4,7 @@ angular.module('lunchRecs')
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
     }
   ])
-  .controller('FirebaseCtrl', ['$scope', '$firebaseArray', '$http', 'AUTH', function($scope, $firebaseArray, $http, AUTH){
+  .controller('FirebaseCtrl', ['$scope', '$firebaseArray', '$http', function($scope, $firebaseArray, $http){
     var ref = new Firebase('https://lunchrecs.firebaseio.com/places');
     var placesObj = {};
     $scope.places = $firebaseArray(ref);
@@ -77,6 +77,16 @@ angular.module('lunchRecs')
       swal("Thanks!", "Your tip has been added!", "success")
       }
     };
+    $scope.yelpSearch = function(string){
+      $http({
+        url: '/api/list',
+        method: "GET",
+        params: {term: string}
+      })
+      .success(function(data){
+        console.log(data);
+      })
+    }
     // $scope.yelpSearch = function(name){
     //   $http.get("http://api.yelp.com/v2/search?term=" + name + "&location=94102&cll=37.783624,-122.408999&limit=10&category_filter=restaurants&callback=datacb"
     //   ).then(function(data){
